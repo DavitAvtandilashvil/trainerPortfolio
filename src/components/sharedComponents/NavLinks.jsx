@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -19,6 +19,7 @@ export default function NavLinks({ rounded, border }) {
 
   const refs = useRef([]);
   const location = useLocation();
+
   const getLeftOffset = () => {
     const screenWidth = window.innerWidth;
 
@@ -30,6 +31,7 @@ export default function NavLinks({ rounded, border }) {
       return 18;
     }
   };
+
   const getWidthAdjustment = () => {
     const screenWidth = window.innerWidth;
 
@@ -54,12 +56,15 @@ export default function NavLinks({ rounded, border }) {
       });
     }
   };
-  useEffect(() => {
+
+  useLayoutEffect(() => {
     const activeIndex = navsArray.findIndex(
       (nav) => nav.linkTo === location.pathname
     );
 
-    updatePosition(activeIndex);
+    if (refs.current[0]) {
+      updatePosition(activeIndex);
+    }
 
     const handleResize = () => {
       updatePosition(activeIndex);
@@ -83,7 +88,7 @@ export default function NavLinks({ rounded, border }) {
         border: border === "top" ? "none" : "1px solid #4D4D4D",
         borderTop: border === "top" ? "1px solid #4D4D4D" : "1px solid #4D4D4D",
       }}
-      className="flex w-full  relative z-10 transition-all duration-75 ease-in-out  justify-between border-[#4D4D4D] bg-[#222222] md:py-[10px] py-[20px] px-[20px] items-center md:text-[1.6rem] text-[1.2rem] font-[400] text-[white]"
+      className="flex w-full md:relative  fixed bottom-0 z-10 transition-all duration-75 ease-in-out  justify-between border-[#4D4D4D] bg-[#222222] md:py-[10px] py-[20px] px-[20px] items-center md:text-[1.6rem] text-[1.2rem] font-[400] text-[white]"
     >
       {navsArray.map((item, index) => {
         return (
