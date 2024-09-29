@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import useSentEmail from "../../costumHooks/useSentEmail";
 
 export default function Contact() {
   const validationSchema = yup.object().shape({
@@ -26,11 +27,20 @@ export default function Contact() {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
+  const { sendEmail, loader } = useSentEmail();
+  const onSubmit = (data) => {
+    console.log(data);
 
-  const onSubmit = (data) => console.log(data);
+    sendEmail(data);
+    setValue("fullName", "");
+    setValue("email", "");
+    setValue("phoneNumber", "");
+    setValue("message", "");
+  };
 
   return (
     <div className="md:w-[522px] pt-[4rem] pb-[8.8rem] w-[256px]">
@@ -98,7 +108,8 @@ export default function Contact() {
         <input
           className="bg-[#121212] hover:bg-[#D7FD44] hover:text-[black] text-[#C4C4C4] self-end cursor-pointer transition-all duration-[1s] ease-in-out border border-[#4D4D4D] md:text-[1.6rem] text-[1.4rem] md:w-[18.4rem] w-[13.7rem] md:h-[4.2rem] h-[3.6rem] rounded-[.8rem]"
           type="submit"
-          value="Submit"
+          value={loader ? "Sending..." : "Submit"}
+          disabled={loader}
         />
       </form>
     </div>
