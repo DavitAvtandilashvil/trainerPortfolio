@@ -29,7 +29,6 @@ export default function JourneyScroll() {
         Your Fitness Journey Starts Here
       </h2>
       <Swiper
-        modules={[Navigation]}
         spaceBetween={19}
         slidesPerView={1}
         grabCursor={true}
