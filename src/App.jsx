@@ -4,6 +4,7 @@ import StoriesPage from "./pages/StoriesPage";
 import Layout from "./layout/Layout";
 import ServicesPage from "./pages/servicesPage";
 import ContactPage from "./pages/ContactPage";
+import AboutMe from "./components/aboutMe/AboutMe";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/stories" element={<StoriesPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/about" element={<AboutMe />} />
       </Route>
     </Routes>
   );
