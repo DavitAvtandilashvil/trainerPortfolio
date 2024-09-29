@@ -6,7 +6,7 @@ import SuccessStory from "../components/successStory/SuccessStory";
 
 export default function MainPage() {
   return (
-    <div>
+    <div className="flex flex-col">
       <Hero />
       <JourneyScroll />
       <AboutMe />

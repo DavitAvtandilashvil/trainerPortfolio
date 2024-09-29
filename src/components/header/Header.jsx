@@ -12,7 +12,7 @@ export default function Header() {
         />
 
         <img
-          className="hidden md:flex md:w-[5.2rem] md:h-[5.8rem] w-[7.4rem] h-[4.8rem]"
+          className=" locoIcon md:w-[5.2rem] md:h-[5.8rem] w-[7.4rem] h-[4.8rem]"
           src="/locoIcon.svg"
           alt="logo"
         />

@@ -16,3 +16,9 @@ html {
 body {
   background-color: #121212;
 }
+.locoIcon {
+  display: none;
+  @media screen and (min-width: 820px) {
+    display: flex;
+  }
+}
