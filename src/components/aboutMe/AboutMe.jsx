@@ -1,6 +1,6 @@
 export default function AboutMe() {
   return (
-    <>
+    <div className="md:px-[8rem] px-[4rem]">
       <h2
         style={{
           background: "linear-gradient(180deg, #C4C4C4 0%, #737373 100%)",
@@ -21,7 +21,7 @@ export default function AboutMe() {
         <div className="flex flex-col justify-between w-[587px] h-[243px] ml-4">
           <div>
             <p className="font-nunito font-normal text-[20px] leading-[27.28px] text-[#C4C4C4] p-4">
-              Hi, I'm Tuna, a personal trainer dedicated to helping people
+              Hi, I&apos;m Tuna, a personal trainer dedicated to helping people
               transform through fitness. My journey began when I overcame my own
               struggles with body confidence and health. Now, I use my
               experience to empower others to achieve their fitness goals.
@@ -41,6 +41,6 @@ export default function AboutMe() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

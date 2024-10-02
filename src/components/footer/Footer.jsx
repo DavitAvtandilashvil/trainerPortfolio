@@ -11,7 +11,7 @@ export default function Footer() {
   ];
   return (
     <>
-      <footer className="bg-[#242424]  py-[4rem] px-[4rem] flex flex-col md:flex-row md:items-center  justify-between ">
+      <footer className="bg-[#242424] md:pb-[40px] pb-[80px] pt-[4rem] px-[4rem] flex flex-col md:flex-row md:items-center  justify-between ">
         <Link className="flex gap-[0.8rem]  pb-[4.2rem]" to={"/"}>
           <img
             className="md:w-[8.8rem] transition-all duration-[1s] ease-in-out  md:h-[5.8rem] w-[7.4rem] h-[4.8rem]"
