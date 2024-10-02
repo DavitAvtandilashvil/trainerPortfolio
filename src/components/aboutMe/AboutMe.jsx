@@ -13,12 +13,12 @@ export default function AboutMe() {
         about me
       </h2>
 
-      <div className="flex justify-between">
-        <div>
-          <img src="/about-img.png" alt="workout-img" className="w-[100%]" />
+      <div className="flex flex-col lg:flex-row justify-between">
+        <div className="lg:w-1/2">
+          <img src="/about-img.png" alt="workout-img" className="w-full" />
         </div>
 
-        <div className="flex flex-col justify-between w-[587px] h-[243px] ml-4">
+        <div className="flex flex-col justify-between w-full lg:w-1/2 ml-0 lg:ml-4 mt-4 lg:mt-0">
           <div>
             <p className="font-nunito font-normal text-[20px] leading-[27.28px] text-[#C4C4C4] p-4">
               Hi, I&apos;m Tuna, a personal trainer dedicated to helping people
@@ -34,7 +34,7 @@ export default function AboutMe() {
             </p>
           </div>
 
-          <div className="flex justify-end mt-[120px]">
+          <div className="flex justify-end mt-4 lg:mt-[120px]">
             <button className="w-[184px] h-[48px] bg-[#B8D44A] text-white rounded-[8px] hover:bg-[#A3C52E] transition duration-300 capitalize">
               see more
             </button>
