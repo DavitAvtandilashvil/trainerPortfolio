@@ -33,7 +33,7 @@ export default function ResultsGallery({ images }) {
   const swiperRef = useRef(null);
   console.log({ length: totalSlides });
   return (
-    <div className="resultsGalleryContainer lg:px-[8rem] mb-[20px] md:px-[4rem] transition-all duration-[1s] ease-in-out">
+    <div className="resultsGalleryContainer lg:px-[8rem] my-[20px] md:px-[4rem] transition-all duration-[1s] ease-in-out">
       <div className=" md:py-[50px] md:px-[60px] lg:px-[60px] py-[30px] px-[30px] border  border-[#4D4D4D]  rounded-[16px]">
         <div className="  flex items-center ">
           <div
