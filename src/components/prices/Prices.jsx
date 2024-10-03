@@ -12,7 +12,7 @@ export default function () {
   ];
 
   return (
-    <div className="pt-0 px-20 min-h-screen max-sm:px-10">
+    <div className="pt-0 px-20 pb-[45.625rem] max-lg:pb-[31.562rem] max-sm:pb-[10.5rem] max-sm:px-10">
       <h2
         className="font-[700] uppercase text-3xl text-[#737373] mb-10 
       max-lg:text-2xl max-lg:mb-6 max-sm:text-sm"
