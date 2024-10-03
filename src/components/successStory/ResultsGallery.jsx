@@ -35,20 +35,45 @@ export default function ResultsGallery({ images }) {
 
   console.log({ length: totalSlides });
   return (
-    <div className="md:px-[8rem] px-[4rem]">
-      <div className="py-[186px] px-[80px] border  border-[#4D4D4D]  rounded-[16px]">
+    <div className="resultsGalleryContainer lg:px-[8rem] mb-[20px] md:px-[4rem] transition-all duration-[1s] ease-in-out">
+      <div className=" md:py-[50px] md:px-[60px] lg:px-[60px] py-[30px] px-[30px] border  border-[#4D4D4D]  rounded-[16px]">
+        <div className="  flex items-center ">
+          <div className="flex pr-10 pl-16">
+            <img
+              className="arrowImage hidden lg:flex transition-all duration-[1s] ease-in-out"
+              src="/Vector3.png"
+            />
+            <img
+              className=" arrowImage   hidden md:flex transition-all duration-[1s] ease-in-out"
+              src="/Vector2.png"
+            />
+            <img className=" arrowImage " src="/Vector1.png" />
+            <img className=" arrowImage " src="/Vector.png" />
+          </div>
+          <h2
+            style={{
+              background: "linear-gradient(180deg, #C4C4C4 0%, #737373 100%)",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+              fontFamily: "Nunito, sans-serif",
+            }}
+            className="font-bold transition-all duration-[1s] ease-in-out lg:text-[3.2rem] text-[1.4rem] md:text-[2.9rem] leading-[43.65px]  uppercase text-left"
+          >
+            Success Story
+          </h2>
+        </div>
         <Swiper
           pagination={{
             clickable: true,
           }}
           modules={[Pagination]}
-          className="mySwiper
+          className="mySwiper lg:py-[75px] md:py-[55px]  py-[35px]
         
            "
         >
           {Array.from({ length: totalSlides }).map((_, slideIndex) => (
             <SwiperSlide key={slideIndex}>
-              <div className="resultsGrid  gap-4">
+              <div className="resultsGrid   items-center gap-[40px]">
                 {images
                   .slice(
                     slideIndex * imagesPerSlide,
@@ -56,16 +81,38 @@ export default function ResultsGallery({ images }) {
                   )
                   .map((image, index) => (
                     <img
+                      className="lg:max-w-[305px] sm:w-[305px] "
                       key={index}
                       src={image.src}
                       alt={image.alt}
-                      style={{ width: "305px", height: "190px" }}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                      }}
                     />
                   ))}
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="flex items-end justify-end  w-[100%]">
+          <img
+            src="/Vector.png"
+            className=" arrowImage transform rotate-180 "
+          />
+          <img
+            src="/Vector1.png"
+            className=" arrowImage transform rotate-180 "
+          />
+          <img
+            src="/Vector2.png"
+            className=" arrowImage  transform rotate-180 transition-opacity transition-visibility duration-[1s] ease-in-out hidden md:flex "
+          />
+          <img
+            src="/Vector3.png"
+            className=" arrowImage transform rotate-180 transition-opacity transition-visibility duration-[1s] ease-in-out hidden  lg:flex"
+          />
+        </div>
       </div>
     </div>
   );

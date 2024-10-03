@@ -43,3 +43,16 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+.arrowImage {
+  width: 21px;
+  height: 32px;
+  @media screen and (min-width: 800px) {
+    width: 44px;
+    height: 66px;
+  }
+}
+.resultsGalleryContainer {
+  @media screen and (min-width: 500px) {
+    padding-inline: 4rem;
+  }
+}
