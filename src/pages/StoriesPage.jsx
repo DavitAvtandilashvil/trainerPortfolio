@@ -1,3 +1,9 @@
+import ResultsBase from "../components/successStory/ResultsBase";
+
 export default function StoriesPage() {
-  return <div>StoriesPage</div>;
+  return (
+    <div>
+      <ResultsBase />
+    </div>
+  );
 }
