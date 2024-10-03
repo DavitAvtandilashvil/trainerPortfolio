@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
-
-import { Pagination } from "swiper/modules";
 
 export default function ResultsGallery({ images }) {
   const [imagesPerSlide, setImagesPerSlide] = useState(1);
@@ -32,13 +30,16 @@ export default function ResultsGallery({ images }) {
   }, []);
 
   const totalSlides = Math.ceil(images.length / imagesPerSlide);
-
+  const swiperRef = useRef(null);
   console.log({ length: totalSlides });
   return (
     <div className="resultsGalleryContainer lg:px-[8rem] mb-[20px] md:px-[4rem] transition-all duration-[1s] ease-in-out">
       <div className=" md:py-[50px] md:px-[60px] lg:px-[60px] py-[30px] px-[30px] border  border-[#4D4D4D]  rounded-[16px]">
         <div className="  flex items-center ">
-          <div className="flex pr-10 pl-16">
+          <div
+            onClick={() => swiperRef.current.swiper.slideNext()}
+            className="flex pr-10 pl-16 cursor-pointer"
+          >
             <img
               className="arrowImage hidden lg:flex transition-all duration-[1s] ease-in-out"
               src="/Vector3.png"
@@ -63,10 +64,10 @@ export default function ResultsGallery({ images }) {
           </h2>
         </div>
         <Swiper
+          ref={swiperRef}
           pagination={{
             clickable: true,
           }}
-          modules={[Pagination]}
           className="mySwiper lg:py-[75px] md:py-[55px]  py-[35px]
         
            "
@@ -95,7 +96,10 @@ export default function ResultsGallery({ images }) {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="flex items-end justify-end  w-[100%]">
+        <div
+          onClick={() => swiperRef.current.swiper.slidePrev()}
+          className="flex items-end justify-end cursor-pointer  w-[100%]"
+        >
           <img
             src="/Vector.png"
             className=" arrowImage transform rotate-180 "
