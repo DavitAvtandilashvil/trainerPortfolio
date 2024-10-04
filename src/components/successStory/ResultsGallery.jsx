@@ -86,6 +86,7 @@ export default function ResultsGallery({ images }) {
             </SwiperSlide>
           ))}
         </Swiper>
+
         <ArrowsUI swipe={swipePrevFunc} className="prevArrow" />
       </div>
     </div>

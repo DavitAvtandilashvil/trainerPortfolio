@@ -26,7 +26,7 @@ export const Modal = ({ toggle, isOpen }) => {
   console.log(navsArray);
   return (
     <motion.div
-      className="fixed md:hidden top-0 right-0 w-full h-full bg-[rgba(255,255,255,0.97)] flex  items-center justify-center z-[50]"
+      className="fixed md:hidden top-0 right-0 w-full h-full bg-[#121212] flex  items-center justify-center z-[50]"
       variants={modalVariants}
       initial="closed"
       animate={isOpen ? "open" : "closed"}
@@ -38,7 +38,7 @@ export const Modal = ({ toggle, isOpen }) => {
         <MenuToggle isOpen={isOpen} />
       </div>
 
-      <div className="text-black" onClick={(e) => e.stopPropagation()}>
+      <div className="text-[white]" onClick={(e) => e.stopPropagation()}>
         <ul className="text-[24px] flex flex-col font-[700] gap-[20px] text-center">
           {navsArray.map((item) => (
             <Link

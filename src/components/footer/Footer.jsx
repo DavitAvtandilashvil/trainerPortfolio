@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import NavLinks from "../sharedComponents/NavLinks";
 export const navsArray = [
   { title: "Home", linkTo: "/" },
-  { title: "About Me", linkTo: "/aboutMe" },
+  { title: "About Me", linkTo: "/stories" },
   { title: "Success Story", linkTo: "/stories" },
   { title: "Services", linkTo: "/services" },
   { title: "Contact", linkTo: "/contact" },
