@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import NavLinks from "../sharedComponents/NavLinks";
 import { MenuToggle } from "../burderMenu/Toggle";
 import { useCycle } from "framer-motion";
+import { Modal } from "../burderMenu/Modal";
 
 export default function Header() {
   const [isOpen, toggleOpen] = useCycle(false, true);
@@ -26,6 +27,7 @@ export default function Header() {
       <div className="relative z-30 md:hidden">
         <MenuToggle toggle={toggleOpen} isOpen={isOpen} />
       </div>
+      {isOpen && <Modal toggle={toggleOpen} isOpen={isOpen} />}
     </header>
   );
 }

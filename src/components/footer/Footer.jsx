@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import NavLinks from "../sharedComponents/NavLinks";
-
+export const navsArray = [
+  { title: "Home", linkTo: "/" },
+  { title: "About Me", linkTo: "/aboutMe" },
+  { title: "Success Story", linkTo: "/stories" },
+  { title: "Services", linkTo: "/services" },
+  { title: "Contact", linkTo: "/contact" },
+];
 export default function Footer() {
-  const navsArray = [
-    { title: "Home", linkTo: "/" },
-    { title: "About Me", linkTo: "/aboutMe" },
-    { title: "Success Story", linkTo: "/stories" },
-    { title: "Services", linkTo: "/services" },
-    { title: "Contact", linkTo: "/contact" },
-  ];
   return (
     <>
       <footer className="bg-[#242424] md:pb-[40px] pb-[80px] pt-[4rem] px-[4rem] flex flex-col md:flex-row md:items-center  justify-between ">
