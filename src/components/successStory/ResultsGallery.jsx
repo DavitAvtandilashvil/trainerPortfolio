@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
+import ArrowsUI from "../sharedComponents/ArrowsUI";
 
 export default function ResultsGallery({ images }) {
   const [imagesPerSlide, setImagesPerSlide] = useState(1);
@@ -32,25 +33,14 @@ export default function ResultsGallery({ images }) {
   const totalSlides = Math.ceil(images.length / imagesPerSlide);
   const swiperRef = useRef(null);
   console.log({ length: totalSlides });
+
+  const swipeNextFunc = () => swiperRef.current.swiper.slideNext();
+  const swipePrevFunc = () => swiperRef.current.swiper.slidePrev();
   return (
     <div className="resultsGalleryContainer lg:px-[8rem] my-[20px] md:px-[4rem] transition-all duration-[1s] ease-in-out">
       <div className=" md:py-[50px] md:px-[60px] lg:px-[60px] py-[30px] px-[30px] border  border-[#4D4D4D]  rounded-[16px]">
         <div className="  flex items-center ">
-          <div
-            onClick={() => swiperRef.current.swiper.slideNext()}
-            className="flex pr-10 pl-16 cursor-pointer"
-          >
-            <img
-              className="arrowImage hidden lg:flex transition-all duration-[1s] ease-in-out"
-              src="/Vector3.png"
-            />
-            <img
-              className=" arrowImage   hidden md:flex transition-all duration-[1s] ease-in-out"
-              src="/Vector2.png"
-            />
-            <img className=" arrowImage " src="/Vector1.png" />
-            <img className=" arrowImage " src="/Vector.png" />
-          </div>
+          <ArrowsUI swipe={swipeNextFunc} />
           <h2
             style={{
               background: "linear-gradient(180deg, #C4C4C4 0%, #737373 100%)",
@@ -96,27 +86,7 @@ export default function ResultsGallery({ images }) {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div
-          onClick={() => swiperRef.current.swiper.slidePrev()}
-          className="flex items-end justify-end cursor-pointer  w-[100%]"
-        >
-          <img
-            src="/Vector.png"
-            className=" arrowImage transform rotate-180 "
-          />
-          <img
-            src="/Vector1.png"
-            className=" arrowImage transform rotate-180 "
-          />
-          <img
-            src="/Vector2.png"
-            className=" arrowImage  transform rotate-180 transition-opacity transition-visibility duration-[1s] ease-in-out hidden md:flex "
-          />
-          <img
-            src="/Vector3.png"
-            className=" arrowImage transform rotate-180 transition-opacity transition-visibility duration-[1s] ease-in-out hidden  lg:flex"
-          />
-        </div>
+        <ArrowsUI swipe={swipePrevFunc} className="prevArrow" />
       </div>
     </div>
   );
