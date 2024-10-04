@@ -6,7 +6,7 @@ export default function Layout() {
   return (
     <div>
       <Header />
-      <main className="pt-[5rem] ">
+      <main>
         <Outlet />
       </main>
       <Footer />
