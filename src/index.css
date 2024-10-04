@@ -44,8 +44,8 @@ body {
   }
 }
 .arrowImage {
-  width: 21px;
-  height: 32px;
+  /* width: 27px;
+  height: 40px; */
   @media screen and (min-width: 800px) {
     width: 44px;
     height: 66px;
@@ -54,5 +54,11 @@ body {
 .resultsGalleryContainer {
   @media screen and (min-width: 500px) {
     padding-inline: 4rem;
+  }
+}
+.mark {
+  @media screen and (max-width: 765px) {
+    left: 1.1rem;
+    top: 1.5rem;
   }
 }
