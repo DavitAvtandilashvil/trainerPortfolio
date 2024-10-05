@@ -1,4 +1,11 @@
+import { useQuery } from "react-query";
+import { fetchAboutData, fetchAboutImage } from "../../services/fetchAboutData";
+
 export default function AboutMe() {
+  const { data: about } = useQuery("aboutData", fetchAboutData);
+  const { data: aboutImage } = useQuery("aboutImage", fetchAboutImage);
+  console.log(aboutImage, "aboutImage");
+  console.log(about, "about");
   return (
     <div className="md:px-[8rem] px-[4rem]">
       {/* First About Me heading that appears on larger screens */}
@@ -8,7 +15,7 @@ export default function AboutMe() {
 
       <div className="flex flex-col lg:flex-row justify-between">
         <div className="lg:w-1/2 pr-[30px]">
-          <img src="/about-img.png" alt="workout-img" className="w-full" />
+          <img src={aboutImage[0].image} alt="workout-img" className="w-full" />
         </div>
 
         <div className="flex items-center pt-[50px] gap-[10px]">
@@ -32,8 +39,16 @@ export default function AboutMe() {
               experience to empower others to achieve their fitness goals.
             </p>
             <div className="block lg:hidden flex flex-col items-center relative">
-              <img src="/Star 11.png" alt="star" className="w-[128px] h-[128px]" />
-              <img src="/3+.png" alt="3+" className="absolute top-[28%] left-[42%] w-[40px] h-auto" />
+              <img
+                src="/Star 11.png"
+                alt="star"
+                className="w-[128px] h-[128px]"
+              />
+              <img
+                src="/3+.png"
+                alt="3+"
+                className="absolute top-[28%] left-[42%] w-[40px] h-auto"
+              />
               <div className="text-white text-[15px] w-[200px] text-center mt-2">
                 3+ Years Of Training Experience
               </div>
@@ -41,14 +56,14 @@ export default function AboutMe() {
           </div>
           <p className="font-nunito font-normal w-full max-w-[587px] text-[20px] leading-[27.28px] text-[#C4C4C4] p-4">
             With years of experience, I specialize in personalized training
-            programs, whether it’s weight loss, strength training, or
-            improving overall well-being. Let’s create a routine that fits
-            your lifestyle and brings lasting results.
+            programs, whether it’s weight loss, strength training, or improving
+            overall well-being. Let’s create a routine that fits your lifestyle
+            and brings lasting results.
           </p>
           <p className="font-nunito font-normal w-full max-w-[587px] text-[20px] leading-[27.28px] text-[#C4C4C4] p-4 block lg:hidden">
             I believe that fitness is not just about physical strength but also
-            mental resilience. Together, we can build a sustainable routine
-            that enhances both your body and mind.
+            mental resilience. Together, we can build a sustainable routine that
+            enhances both your body and mind.
           </p>
 
           <div className="flex justify-end mt-4 lg:mt-[120px]">
