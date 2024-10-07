@@ -2,7 +2,7 @@ import HeroFooter from "./HeroFooter";
 
 export default function Hero() {
   return (
-    <div>
+    <div className="overflow-hidden">
       <div
         className="relative bg-cover bg-center bg-no-repeat h-[49.813rem] 
         w-full max-lg:h-[49.813rem] max-sm:h-[18.278rem]"
