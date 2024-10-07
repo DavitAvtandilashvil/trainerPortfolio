@@ -37,7 +37,7 @@ export default function ResultsGallery({ images }) {
   const swipeNextFunc = () => swiperRef.current.swiper.slideNext();
   const swipePrevFunc = () => swiperRef.current.swiper.slidePrev();
   return (
-    <div className="resultsGalleryContainer lg:px-[8rem] my-[20px] md:px-[4rem] transition-all duration-[1s] ease-in-out">
+    <div className="resultsGalleryContainer lg:px-[8rem]  my-[20px] md:px-[4rem] transition-all duration-[1s] ease-in-out">
       <div className=" md:py-[50px] md:px-[60px] lg:px-[60px] py-[30px] px-[30px] border  border-[#4D4D4D]  rounded-[16px]">
         <div className="  flex items-center ">
           <ArrowsUI swipe={swipeNextFunc} />

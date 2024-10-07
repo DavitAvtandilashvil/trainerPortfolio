@@ -1,4 +1,5 @@
 import JourneyScroll from "../components/journeyScroll/JourneyScroll";
+
 import Prices from "../components/prices/Prices";
 
 export default function ServicesPage() {
