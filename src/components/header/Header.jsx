@@ -17,7 +17,7 @@ export default function Header() {
       >
         <Link className="flex gap-[1.6rem] mr-auto" to={"/"}>
           <img
-            className="w-[8.8rem] h-[5.8rem]"
+            className="md:w-[8.8rem] w-[74px] h-[5.8rem]"
             src="/testLogo.svg"
             alt="textLogo"
           />

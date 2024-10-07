@@ -61,3 +61,8 @@ body {
     top: 1.5rem;
   }
 }
+.aboutMeHeroImage {
+  @media screen and (max-width: 500px) {
+    width: 295px;
+  }
+}
