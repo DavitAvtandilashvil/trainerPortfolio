@@ -10,11 +10,11 @@ export default function Hero() {
       >
         <h1
           className="absolute top-[21.1875rem] left-[5rem] text-white text-5xl 
-        uppercase w-[44.938rem] font-[800] font-openSans max-lg:text-4xl 
-        max-lg:w-[34.438rem] max-sm:invisible"
+        uppercase w-[53rem] font-[800] tracking-[0.19em] max-lg:text-4xl 
+        max-lg:w-[40rem] max-sm:invisible"
         >
           Stronger every day,{" "}
-          <span style={{ color: '#999999' }}>inside and out</span>
+          <span className="text-[#999999]"> inside and out</span>
         </h1>
       </div>
       <HeroFooter />
