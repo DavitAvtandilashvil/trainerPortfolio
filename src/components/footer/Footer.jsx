@@ -31,8 +31,8 @@ export default function Footer() {
         </Link>
         <div>
           <div className="flex pb-[4.2rem] flex-col md:flex-row gap-[0.8rem] lg:gap-[4.1rem] text-[1.2rem] font-[400] text-[#C4C4C4]  transition-all duration-[1s] ease-in-out">
-            {navsArray.map((item) => (
-              <Link key={item.linkTo} to={item.linkTo}>
+            {navsArray.map((item, index) => (
+              <Link key={index} to={item.linkTo}>
                 {item.title}
               </Link>
             ))}

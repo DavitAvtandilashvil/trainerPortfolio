@@ -1,21 +1,61 @@
-import { useQuery } from "react-query";
-import { fetchAboutData, fetchAboutImage } from "../../services/fetchAboutData";
-
+import { useAboutId } from "../../costumHooks/useAboutId.js";
+import { useAboutImage } from "../../costumHooks/useAboutImage.js";
+import { useStoryData } from "../../costumHooks/useStoryData.js";
+import { useExperience } from "../../costumHooks/useExperience.js";
 export default function AboutMe() {
-  const { data: about } = useQuery("aboutData", fetchAboutData);
-  const { data: aboutImage } = useQuery("aboutImage", fetchAboutImage);
-  console.log(aboutImage, "aboutImage");
+  const {
+    data: about,
+    isLoading: loadingAbout,
+    error: errorAbout,
+  } = useAboutId();
+  const {
+    data: aboutImage,
+    isLoading: loadingImage,
+    error: errorImage,
+  } = useAboutImage();
+  const {
+    data: storyData,
+    isLoading: loadingStoryData,
+    error: errorStoryData,
+  } = useStoryData();
+  const {
+    data: experience,
+    isLoading: loadingExperience,
+    error: errorExperience,
+  } = useExperience();
+
+  if (loadingAbout || loadingImage || loadingStoryData || loadingExperience) {
+    return <div>Loading...</div>;
+  }
+
+  if (errorAbout || errorImage || errorStoryData || errorExperience) {
+    return (
+      <div>
+        Error:{" "}
+        {errorAbout?.message ||
+          errorImage?.message ||
+          errorStoryData?.message ||
+          errorExperience?.message}
+      </div>
+    );
+  }
   console.log(about, "about");
+  const story = storyData?.[0]?.story;
+  const experienceText = experience?.[0]?.experience;
+
   return (
     <div className="md:px-[8rem] px-[4rem]">
-      {/* First About Me heading that appears on larger screens */}
       <h2 className="hidden lg:block font-bold text-[32px] leading-[43.65px] mb-4 uppercase bg-gradient-to-b from-gray-400 to-gray-600 bg-clip-text text-transparent font-nunito">
         about me
       </h2>
 
       <div className="flex flex-col lg:flex-row justify-between">
         <div className="lg:w-1/2 pr-[30px]">
-          <img src={aboutImage[0].image} alt="workout-img" className="w-full" />
+          <img
+            src={aboutImage?.[0]?.image || "/fallback-image.png"}
+            alt="About me section image"
+            className="w-full"
+          />
         </div>
 
         <div className="flex items-center pt-[50px] gap-[10px]">
@@ -33,10 +73,7 @@ export default function AboutMe() {
         <div className="flex flex-col justify-between w-full lg:w-1/2 ml-0 lg:ml-4 mt-4 lg:mt-0">
           <div className="flex items-start gap-[20px]">
             <p className="font-nunito font-normal w-full max-w-[587px] text-[20px] leading-[27.28px] text-[#C4C4C4] p-4">
-              Hi, I&apos;m Tuna, a personal trainer dedicated to helping people
-              transform through fitness. My journey began when I overcame my own
-              struggles with body confidence and health. Now, I use my
-              experience to empower others to achieve their fitness goals.
+              {story}
             </p>
             <div className="block lg:hidden flex flex-col items-center relative">
               <img
@@ -50,16 +87,11 @@ export default function AboutMe() {
                 className="absolute top-[28%] left-[42%] w-[40px] h-auto"
               />
               <div className="text-white text-[15px] w-[200px] text-center mt-2">
-                3+ Years Of Training Experience
+                {experienceText}
               </div>
             </div>
           </div>
-          <p className="font-nunito font-normal w-full max-w-[587px] text-[20px] leading-[27.28px] text-[#C4C4C4] p-4">
-            With years of experience, I specialize in personalized training
-            programs, whether it’s weight loss, strength training, or improving
-            overall well-being. Let’s create a routine that fits your lifestyle
-            and brings lasting results.
-          </p>
+
           <p className="font-nunito font-normal w-full max-w-[587px] text-[20px] leading-[27.28px] text-[#C4C4C4] p-4 block lg:hidden">
             I believe that fitness is not just about physical strength but also
             mental resilience. Together, we can build a sustainable routine that
