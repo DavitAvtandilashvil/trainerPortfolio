@@ -36,7 +36,7 @@ export default function AboutMe() {
   const story = storyData?.[0]?.story;
 
   return (
-    <div className="md:px-[8rem] px-[3.7rem] py-[8rem]">
+    <div className=" aboutMeContainer md:px-[8rem] px-[3.7rem] py-[8rem] ">
       <h2 className="font-bold md:text-[32px] text-[1.4rem] leading-[43.65px] mb-4 uppercase bg-gradient-to-b from-gray-400 to-gray-600 bg-clip-text text-transparent font-nunito">
         about me
       </h2>

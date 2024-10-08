@@ -64,5 +64,11 @@ body {
 .aboutMeHeroImage {
   @media screen and (max-width: 500px) {
     width: 295px;
+    height: 295px;
+  }
+}
+.aboutMeContainer {
+  @media screen and (max-width: 500px) {
+    padding-inline: 20px;
   }
 }
