@@ -2,7 +2,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useSentEmail from "../../costumHooks/useSentEmail";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Contact() {
   const validationSchema = yup.object().shape({
     fullName: yup
@@ -36,6 +37,7 @@ export default function Contact() {
     console.log(data);
 
     sendEmail(data);
+    toast.success("contact successfully");
     setValue("fullName", "");
     setValue("email", "");
     setValue("phoneNumber", "");
