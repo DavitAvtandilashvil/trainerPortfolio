@@ -13,24 +13,27 @@ export default function DropdownContent({ sessions, isOpen }) {
             : 'max-h-0 opacity-0'
         }`}
     >
-      {sessions.map((session, index) => (
-        <div
-          key={index}
-          className="flex items-center justify-center p-4 max-sm:p-0"
-        >
-          <div className="flex items-center gap-4 ">
-            <img
-              src={IconCross}
-              alt=""
-              className="max-sm:w-[0.875rem] max-sm:h-[0.875rem]"
-            />
-            <span className="text-base text-[#C4C4C4] uppercase max-sm:text-xs">
-              {session.label || `${session.count} SESSIONS:`} $
-              {Math.round(session.price)}
-            </span>
+      {sessions && sessions.length > 0 ? (
+        sessions.map((session, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-center p-4 max-sm:p-0"
+          >
+            <div className="flex items-center gap-4 ">
+              <img
+                src={IconCross}
+                alt=""
+                className="max-sm:w-[0.875rem] max-sm:h-[0.875rem]"
+              />
+              <span className="text-base text-[#C4C4C4] uppercase max-sm:text-xs">
+                {session.label} ${session.price}
+              </span>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      ) : (
+        <span className="text-base text-[#C4C4C4]">No sessions available</span>
+      )}
     </div>
   );
 }
