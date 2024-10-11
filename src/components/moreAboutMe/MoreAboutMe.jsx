@@ -1,4 +1,5 @@
 import { useExperience } from "../../costumHooks/useExperience";
+import { useStoryData } from "../../costumHooks/useStoryData";
 import ArrowsUI from "../sharedComponents/ArrowsUI";
 
 export default function MoreAboutMe() {
@@ -7,20 +8,35 @@ export default function MoreAboutMe() {
     isLoading: experienceLoading,
     error: experienceError,
   } = useExperience();
-  if (experienceLoading) {
-    return <div>Loading...</div>;
-  }
-  if (experienceError) {
-    return <div>Error: {experienceError?.message}</div>;
-  }
-  console.log(experience[0]?.experience, "experience");
+  const {
+    data: storyData,
+    isLoading: loadingStoryData,
+    error: errorStoryData,
+  } = useStoryData();
 
+  if (experienceLoading || loadingStoryData) {
+    return <div className="loading">Loading...</div>;
+  }
+
+  if (experienceError || errorStoryData) {
+    return (
+      <div className="error">
+        Error: {experienceError?.message || errorStoryData?.message}
+      </div>
+    );
+  }
+  const story = storyData?.[0]?.story;
   return (
     <div className="flex flex-col w-full items-center justify-center py-[4rem]">
-      <div className="w-full lg:px-[8rem] my-[20px] px-[4rem]">
-        <img className="w-full" src="/Rectangle 33.png" alt="" />
+      <div className="w-full max-h-[720px]  lg:px-[8rem] my-[20px] px-[4rem]">
+        <img
+          className="w-full"
+          src="/Rectangle 33 (1).png"
+          alt="About me banner"
+        />
       </div>
-      <div className=" w-full py-[4rem] md:py-[6rem] lg:px-[8rem] my-[20px] px-[4rem] flex flex-col  gap-[2.4rem]">
+
+      <div className="w-full py-[4rem] md:py-[6rem] lg:px-[8rem] my-[20px] px-[4rem] flex flex-col gap-[2.4rem]">
         <div className="flex items-center justify-start w-full ">
           <ArrowsUI />
           <h2
@@ -35,19 +51,21 @@ export default function MoreAboutMe() {
             about me
           </h2>
         </div>
-        <div className="flex  flex-col md:flex-row justify-between items-center">
-          <div className="">
+
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div>
             <p className="text-[#C4C4C4] w-full lg:w-[738px] md:w-[497px] md:text-[2rem] text-[1.4rem] font-[400]">
-              I’m Tuna, a passionate personal trainer dedicated to helping
-              others transform their lives through fitness. My journey began
-              when I struggled with body confidence and health issues. Through
-              hard work and discipline, I discovered the power of exercise and
-              healthy living.
+              <p>{story}</p>
             </p>
           </div>
-          <div className="flex flex-col justify-center gap-[1.5rem] pt-[4rem] items-center">
-            <div className="relative w-full flex  justify-center">
-              <img className="w-[8rem] h-[8rem]" src="/Star 11.png" alt="" />
+
+          <div className="flex flex-col justify-center gap-[1.5rem] pt-[4rem] md:pt-[0px] items-center">
+            <div className="relative w-full flex justify-center">
+              <img
+                className="w-[8rem] h-[8rem]"
+                src="/Star 11.png"
+                alt="Experience Star"
+              />
               <span className="absolute top-[22px] text-[2.4rem] text-[#000] font-[700]">
                 3+
               </span>

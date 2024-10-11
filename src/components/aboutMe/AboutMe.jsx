@@ -1,14 +1,9 @@
 import { Link } from "react-router-dom";
-import { useAboutId } from "../../costumHooks/useAboutId.js";
+
 import { useAboutImage } from "../../costumHooks/useAboutImage.js";
 import { useStoryData } from "../../costumHooks/useStoryData.js";
 
 export default function AboutMe() {
-  const {
-    data: about,
-    isLoading: loadingAbout,
-    error: errorAbout,
-  } = useAboutId();
   const {
     data: aboutImage,
     isLoading: loadingImage,
@@ -20,19 +15,14 @@ export default function AboutMe() {
     error: errorStoryData,
   } = useStoryData();
 
-  if (loadingAbout || loadingImage || loadingStoryData) {
+  if (loadingImage || loadingStoryData) {
     return <div>Loading...</div>;
   }
 
-  if (errorAbout || errorImage || errorStoryData) {
-    return (
-      <div>
-        Error:{" "}
-        {errorAbout?.message || errorImage?.message || errorStoryData?.message}
-      </div>
-    );
+  if (errorImage || errorStoryData) {
+    return <div>Error: {errorImage?.message || errorStoryData?.message}</div>;
   }
-  console.log(about, "about");
+
   const story = storyData?.[0]?.story;
 
   return (
