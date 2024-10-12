@@ -5,6 +5,8 @@ import Layout from "./layout/Layout";
 import ServicesPage from "./pages/servicesPage";
 import ContactPage from "./pages/ContactPage";
 import AboutMe from "./components/aboutMe/AboutMe";
+import AdminSignIn from "./pages/AdminSignIn";
+import DashBoard from "./pages/adminsPages/DashBoard";
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutMe />} />
+        <Route path="/admin" element={<AdminSignIn />} />
+
+        <Route path="/admin/dashBoard" element={<DashBoard />} />
       </Route>
     </Routes>
   );
