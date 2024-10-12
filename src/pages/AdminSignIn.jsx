@@ -1,55 +1,51 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function AdminSignIn() {
-  const [login, setLogin] = useState({
-    userName: "",
-    passWord: "",
-  });
+// eslint-disable-next-line react/prop-types
+export default function AdminSignIn({ setIsAuthenticated }) {
+  const navigate = useNavigate();
+  const [login, setLogin] = useState({ userName: "", passWord: "" });
 
-  const admin = {
+  const adminCredentials = {
     userName: "admin",
     passWord: "admin",
   };
-  const navigate = useNavigate();
-  const handleUserNameInput = (input) => {
-    setLogin((prev) => ({ ...prev, userName: input }));
-  };
 
-  const handlePasswordInput = (input) => {
-    setLogin((prev) => ({ ...prev, passWord: input }));
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setLogin((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (
-      login.userName === admin.userName &&
-      login.passWord === admin.passWord
+      login.userName === adminCredentials.userName &&
+      login.passWord === adminCredentials.passWord
     ) {
+      setIsAuthenticated(true);
       navigate("/admin/dashBoard");
     } else {
-      alert("Incorrect username or password!");
+      alert("Invalid credentials");
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={(e) => handleUserNameInput(e.target.value)}
-          value={login.userName}
-          type="text"
-          placeholder="Username"
-        />
-        <input
-          onChange={(e) => handlePasswordInput(e.target.value)}
-          value={login.passWord}
-          type="password"
-          placeholder="Password"
-        />
-        <button type="submit">Log In</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        name="userName"
+        onChange={handleInputChange}
+        value={login.userName}
+        type="text"
+        placeholder="Username"
+      />
+      <input
+        name="passWord"
+        onChange={handleInputChange}
+        value={login.passWord}
+        type="password"
+        placeholder="Password"
+      />
+      <button type="submit">Log In</button>
+    </form>
   );
 }

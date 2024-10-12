@@ -7,8 +7,18 @@ import ContactPage from "./pages/ContactPage";
 import AboutMe from "./components/aboutMe/AboutMe";
 import AdminSignIn from "./pages/AdminSignIn";
 import DashBoard from "./pages/adminsPages/DashBoard";
+import ProtectedRoute from "./components/protectedRoute/protectedRoute";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const savedAuth = localStorage.getItem("isAuthenticated");
+    return savedAuth ? JSON.parse(savedAuth) : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
+  }, [isAuthenticated]);
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -17,9 +27,20 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutMe />} />
-        <Route path="/admin" element={<AdminSignIn />} />
-
-        <Route path="/admin/dashBoard" element={<DashBoard />} />
+      </Route>
+      <Route>
+        <Route
+          path="/admin"
+          element={<AdminSignIn setIsAuthenticated={setIsAuthenticated} />}
+        />
+        <Route
+          path="/admin/dashBoard"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <DashBoard />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     </Routes>
   );
