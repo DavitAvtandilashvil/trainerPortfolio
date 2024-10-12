@@ -3,13 +3,13 @@ import { useRef, useState, useLayoutEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 
-export default function NavLinks({ rounded, border }) {
-  const navsArray = [
-    { title: "HOME", linkTo: "/" },
-    { title: "STORIES", linkTo: "/stories" },
-    { title: "SERVICES", linkTo: "/services" },
-    { title: "CONTACT", linkTo: "/contact" },
-  ];
+export default function NavLinks({ rounded, border, navsArray }) {
+  // const navsArray = [
+  //   { title: "HOME", linkTo: "/" },
+  //   { title: "STORIES", linkTo: "/stories" },
+  //   { title: "SERVICES", linkTo: "/services" },
+  //   { title: "CONTACT", linkTo: "/contact" },
+  // ];
 
   const [position, setPosition] = useState({
     left: 0,
@@ -100,7 +100,7 @@ export default function NavLinks({ rounded, border }) {
                 isActive ? "text-black" : "text-white"
               }`
             }
-            key={item.linkTo}
+            key={index}
             to={item.linkTo}
           >
             {item.title}

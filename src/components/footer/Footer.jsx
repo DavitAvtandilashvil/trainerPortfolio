@@ -1,18 +1,19 @@
 import { Link, useLocation } from "react-router-dom";
 import NavLinks from "../sharedComponents/NavLinks";
 import { useEffect } from "react";
-export const navsArray = [
-  { title: "Home", linkTo: "/" },
-  { title: "About Me", linkTo: "/stories" },
-  { title: "Success Story", linkTo: "/stories" },
-  { title: "Services", linkTo: "/services" },
-  { title: "Contact", linkTo: "/contact" },
-];
+
 export default function Footer() {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+  const navsArray = [
+    { title: "Home", linkTo: "/" },
+    { title: "About Me", linkTo: "/stories" },
+    { title: "Success Story", linkTo: "/stories" },
+    { title: "Services", linkTo: "/services" },
+    { title: "Contact", linkTo: "/contact" },
+  ];
   return (
     <>
       <footer className="bg-[#242424] md:pb-[40px] pb-[80px] pt-[4rem] px-[4rem] flex flex-col md:flex-row md:items-center  justify-between ">
@@ -64,7 +65,7 @@ export default function Footer() {
       </footer>
 
       <div className=" transition-all duration-[1s] ease-in-out w-full flex md:hidden  ">
-        <NavLinks border={"top"} />
+        <NavLinks border={"top"} navsArray={navsArray} />
       </div>
     </>
   );

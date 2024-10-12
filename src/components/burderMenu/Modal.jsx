@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 import { MenuToggle } from "./Toggle";
 import { Link } from "react-router-dom";
-import { navsArray } from "../footer/Footer";
 
 const modalVariants = {
   open: { x: 0, opacity: 1 },
@@ -12,6 +11,13 @@ const modalVariants = {
 };
 
 export const Modal = ({ toggle, isOpen }) => {
+  const navsArray = [
+    { title: "Home", linkTo: "/" },
+    { title: "About Me", linkTo: "/stories" },
+    { title: "Success Story", linkTo: "/stories" },
+    { title: "Services", linkTo: "/services" },
+    { title: "Contact", linkTo: "/contact" },
+  ];
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";

@@ -8,6 +8,12 @@ export default function Header() {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const { pathname } = useLocation();
   console.log(pathname);
+  const navsArray = [
+    { title: "HOME", linkTo: "/" },
+    { title: "STORIES", linkTo: "/stories" },
+    { title: "SERVICES", linkTo: "/services" },
+    { title: "CONTACT", linkTo: "/contact" },
+  ];
   return (
     <div className="relative">
       <header
@@ -29,7 +35,7 @@ export default function Header() {
           />
         </Link>
         <div className="hidden md:flex">
-          <NavLinks rounded="20rem" />
+          <NavLinks rounded="20rem" navsArray={navsArray} />
         </div>
         <div className="relative z-30 md:hidden">
           <MenuToggle toggle={toggleOpen} isOpen={isOpen} />

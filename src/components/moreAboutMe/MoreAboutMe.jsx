@@ -28,7 +28,7 @@ export default function MoreAboutMe() {
   const story = storyData?.[0]?.story;
   return (
     <div className="flex flex-col w-full items-center justify-center py-[4rem]">
-      <div className="w-full max-h-[720px]  lg:px-[8rem] my-[20px] px-[4rem]">
+      <div className="w-full max-h-[720px] overflow-hidden  lg:px-[8rem] my-[20px] px-[4rem]">
         <img
           className="w-full"
           src="/Rectangle 33 (1).png"
@@ -55,7 +55,7 @@ export default function MoreAboutMe() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>
             <p className="text-[#C4C4C4] w-full lg:w-[738px] md:w-[497px] md:text-[2rem] text-[1.4rem] font-[400]">
-              <p>{story}</p>
+              <span>{story}</span>
             </p>
           </div>
 
