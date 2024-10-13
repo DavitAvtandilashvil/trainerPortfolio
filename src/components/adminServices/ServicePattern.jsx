@@ -14,7 +14,7 @@ export default function ServicePattern() {
           <div className={`${isOpen ? "flex flex-col pb-[10px]" : "hidden"}`}>
             <div className="flex items-center gap-[5px]">
               <div className="bg-[white] w-[8px] h-[8px] rounded-full"></div>
-              <p className="text-[white] ">Price</p>
+              <p className="text-[white] md:text-[20px] text-[18px] ">Price</p>
             </div>
 
             <div>
