@@ -9,6 +9,7 @@ import AdminSignIn from "./pages/AdminSignIn";
 import DashBoard from "./pages/adminsPages/DashBoard";
 import ProtectedRoute from "./components/protectedRoute/protectedRoute";
 import { useEffect, useState } from "react";
+import Services from "./pages/adminsPages/Services";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -38,6 +39,14 @@ function App() {
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <DashBoard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/services"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <Services />
             </ProtectedRoute>
           }
         />

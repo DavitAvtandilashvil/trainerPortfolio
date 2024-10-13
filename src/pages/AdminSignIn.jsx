@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function AdminSignIn({ setIsAuthenticated }) {
   const navigate = useNavigate();
   const [login, setLogin] = useState({ userName: "", passWord: "" });
-
+  const [error, setError] = useState("");
   const adminCredentials = {
     userName: "admin",
     passWord: "admin",
@@ -14,6 +14,7 @@ export default function AdminSignIn({ setIsAuthenticated }) {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setLogin((prev) => ({ ...prev, [name]: value }));
+    setError("");
   };
 
   const handleSubmit = (e) => {
@@ -25,27 +26,35 @@ export default function AdminSignIn({ setIsAuthenticated }) {
       setIsAuthenticated(true);
       navigate("/admin/dashBoard");
     } else {
-      alert("Invalid credentials");
+      setError("Invalid credentials");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      className="flex flex-col  gap-[20px] justify-center items-center h-[100vh]"
+      onSubmit={handleSubmit}
+    >
       <input
         name="userName"
         onChange={handleInputChange}
         value={login.userName}
         type="text"
         placeholder="Username"
+        className="w-[300px]  h-[30px]"
       />
       <input
+        className="w-[300px] h-[30px]"
         name="passWord"
         onChange={handleInputChange}
         value={login.passWord}
         type="password"
         placeholder="Password"
       />
-      <button type="submit">Log In</button>
+      {error && <p className="text-[red]">{error}</p>}
+      <button className="text-[16px] text-[white]" type="submit">
+        submit
+      </button>
     </form>
   );
 }
