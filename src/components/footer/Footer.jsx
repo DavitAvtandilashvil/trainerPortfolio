@@ -9,7 +9,7 @@ export default function Footer() {
   }, [location]);
   const navsArray = [
     { title: "Home", linkTo: "/" },
-    { title: "About Me", linkTo: "/stories" },
+
     { title: "Success Story", linkTo: "/stories" },
     { title: "Services", linkTo: "/services" },
     { title: "Contact", linkTo: "/contact" },
